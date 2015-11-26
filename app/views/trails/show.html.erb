@@ -1,0 +1,11 @@
+<h1 class="title">
+  <%= @trail.trail_name %>
+</h1>
+
+<p class="date">
+  Created <%= time_ago_in_words(@trail.created_at) %> ago
+</p>
+
+<p class="trail_info">
+  <%= @trail.trail_info %>
+</p>

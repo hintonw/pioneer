@@ -1,0 +1,8 @@
+<h1>This is the Trails index.html.erb page.</h1>
+
+<%= @trail.each do |trail| %>
+  <div class="post_wrapper">
+    <h2 class="title"><%= link_to trail.trail_name, trail %></h2>
+    <p class="date"><%= trail.created_at.strftime("%B, %d, %Y") %></p>
+  </div>  
+<% end %>
