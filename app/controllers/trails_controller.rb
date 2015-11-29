@@ -31,7 +31,10 @@ class TrailsController < ApplicationController
   end
 
   def create_api
-    respond_with Trail.create(:trail_name => params[:trail_name], :trail_info => params[:trail_info], :lat_lon => params[:lat_lon])
+    @user = User.find(params[:id])
+    @trail = Trail.create(:trail_name => params[:trail_name], :trail_info => params[:trail_info], :lat_lon => params[:lat_lon])
+    @trail.user << @user
+    respond_with @trail
   end
 
   def show
@@ -43,8 +46,17 @@ class TrailsController < ApplicationController
     end
   end
 
+  def show_api
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @user.trails.to_json }
+    end
+  end
+
   private
     def trail_params
-      params.require(:trail).permit(:trail_name, :trail_info)
+      params.require(:trail).permit(:trail_name, :trail_info, :id, :lat_lon)
     end
 end

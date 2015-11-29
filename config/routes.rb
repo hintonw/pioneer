@@ -8,4 +8,6 @@ Rails.application.routes.draw do
 
   post '/trails/create' => 'trails#create_api'
 
+  get '/trails/user/:id' => 'trails#show_api'
+
 end
