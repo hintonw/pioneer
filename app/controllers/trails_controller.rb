@@ -43,7 +43,7 @@ class TrailsController < ApplicationController
     @user = User.find(params[:id])
     @trail = Trail.create(:trail_name => params[:trail_name], :trail_info => params[:trail_info], :lat_lon => params[:lat_lon])
     @trail.user << @user
-    respond_with @trail
+    render :json => @trail
   end
 
   def show
