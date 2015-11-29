@@ -8,6 +8,15 @@ class TrailsController < ApplicationController
     @trail = Trail.all.order('created_at DESC')
   end
 
+  def index
+    @trail = Trail.all
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @trail.to_json }
+    end
+  end
+
 
   def new
     @trail = current_user.trails.build

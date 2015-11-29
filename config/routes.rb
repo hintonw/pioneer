@@ -10,4 +10,8 @@ Rails.application.routes.draw do
 
   get '/trails/user/:id' => 'trails#show_api'
 
+  get '/trails' => 'trails#index_api'
+
+  post '/user/new' => 'users#new_api'
+
 end
